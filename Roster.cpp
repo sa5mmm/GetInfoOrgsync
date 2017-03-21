@@ -61,30 +61,33 @@ int main()
 			email = input;
 			emailCheck = testEmail(email);
 		}
-		//Output to the user the information and ask if it is correct. (We might have changed some values!)
-		cout << "Just checking that this is correct: \n";
-		cout << "Your name is: " << name << endl;
-		cout << "Your Student ID is: " << ID << endl;
-		cout << "Your Student email is: " << email << endl;
-		cout << "Is this correct (Y/N): \n";
-		getline(cin, input);
-		if (input == "y" |input ==  "Y")//If it is correct lets put the info into the file.
+		while (moreMembers)//If name was false this will now not show and it will continue to the end of the program (Might be a more efficient way to end the program, but whatever)
 		{
-			file << name << "\t" << ID << "\t" << email << endl;
-			//Reset the variables for user privacy.
-			name = "";
-			ID = "";
-			email = "";
-			system("CLS");//Clears the screen for privacy.
-		}
-		else
-		{//If information is not correct they need to try again or tell us why.
-			cout << "Please try again! Or Contact Sam!\n";
-			cout << "Do you want to clear the screen first (Y/N): ";//Ask them if they want to clear the screen for privacy. They might want to see previous information for more information on acceptable input.
+			//Output to the user the information and ask if it is correct. (We might have changed some values!)
+			cout << "Just checking that this is correct: \n";
+			cout << "Your name is: " << name << endl;
+			cout << "Your Student ID is: " << ID << endl;
+			cout << "Your Student email is: " << email << endl;
+			cout << "Is this correct (Y/N): \n";
 			getline(cin, input);
-			if (input == "y" | input == "Y")
+			if (input == "y" | input == "Y")//If it is correct lets put the info into the file.
 			{
-				system("CLS");
+				file << name << "\t" << ID << "\t" << email << endl;
+				//Reset the variables for user privacy.
+				name = "";
+				ID = "";
+				email = "";
+				system("CLS");//Clears the screen for privacy.
+			}
+			else
+			{//If information is not correct they need to try again or tell us why.
+				cout << "Please try again! Or Contact Sam!\n";
+				cout << "Do you want to clear the screen first (Y/N): ";//Ask them if they want to clear the screen for privacy. They might want to see previous information for more information on acceptable input.
+				getline(cin, input);
+				if (input == "y" | input == "Y")
+				{
+					system("CLS");
+				}
 			}
 		}
 	}
